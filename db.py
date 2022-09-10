@@ -3,7 +3,10 @@ import psycopg2.extras
 import psycopg2.errors
 
 
-conn = psycopg2.connect(dbname="kursach_Sasha", user="postgres", password="alp37327", host="localhost")
+conn = psycopg2.connect(dbname="de0bqj7k0h7b11",
+                        user="pvklstfzndomrq",
+                        password="b0bdfe5e796b4ec43ed138626c5933080b2782ac184e8a784c0c806e99f34387",
+                        host="ec2-3-214-2-141.compute-1.amazonaws.com")
 
 
 def get_user(username, password):
