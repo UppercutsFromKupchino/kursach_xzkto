@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задачи</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+     <ul>
+         {% for message in messages %}
+         <li>{{ message }}</li>
+         {% endfor %}
+     </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="header">
+        <a href="{{ url_for('index') }}">Домашняя страница</a>
+        <a href="{{ url_for('add_task') }}">Хотите что-то записать?</a>
+        <a href="{{ url_for('logout') }}">Выйти из системы</a>
+    </div>
+    <div>
+        <form action="{{ url_for('get_tasks') }}" method="post">
+            <label>Введите дату</label>
+            <input type="date" name="date">
+            <input type="submit">
+        </form>
+        {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <hr>
+                <li>{{ task[2] }}</li>
+                <li>{{ task[3].strftime("%Y-%m-%d") }}</li>
+                <hr>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

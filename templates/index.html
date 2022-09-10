@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+     <ul>
+         {% for message in messages %}
+         <li>{{ message }}</li>
+         {% endfor %}
+     </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="header">
+        {% if session["loggedin"] %}
+        <a href="{{ url_for('logout') }}">Выйти из системы</a>
+        {% else %}
+        <a href="{{ url_for('login') }}">Войти в систему</a>
+        {% endif %}
+        <a href="{{ url_for('add_task') }}">Хотите что-то записать?</a>
+        <a href="{{ url_for('get_tasks') }}">Хотите посмотреть, что записано?</a>
+        <a href="{{ url_for('register') }}">Зарегистрироваться</a>
+    </div>
+    <div>
+        Приветствую вас на to-do трекере. developed by Sasha
+    </div>
+</body>
+</html>

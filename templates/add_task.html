@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить задачу</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+     <ul>
+         {% for message in messages %}
+         <li>{{ message }}</li>
+         {% endfor %}
+     </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="header">
+        <a href="{{ url_for('index') }}">Домашняя страница</a>
+        <a href="{{ url_for('get_tasks') }}">Хотите посмотреть, что записано?</a>
+        <a href="{{ url_for('logout') }}">Выйти из системы</a>
+    </div>
+    <form action="{{ url_for('add_task') }}" method="post">
+        <label>Введите текст задачи</label>
+        <input type="text" name="name">
+        <label>Введите дату</label>
+        <input type="date" name="date">
+        <input type="submit">
+    </form>
+</body>
+</html>
