@@ -20,7 +20,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         if username and password:
-            account = db.get_user_for_registration(username)
+            account = db.get_user(username, password)
             if account:
                 session["loggedin"] = True
                 session["username"] = username
@@ -48,7 +48,7 @@ def register():
     if request.method == 'GET':
         return render_template("register.html")
     else:
-        account = db.get_user(request.form.get("username"), request.form.get("password"))
+        account = db.get_user_for_registration(request.form.get("username"))
         if account:
             flash("Пользователь с таким логином уже существует")
             return redirect(url_for('register'))
