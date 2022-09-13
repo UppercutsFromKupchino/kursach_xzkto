@@ -17,12 +17,21 @@ def get_user(username, password):
     return account
 
 
+def get_user_for_registration(username):
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute(f'SELECT * FROM _user_ WHERE username = \'{username}\'')
+    account = cursor.fetchone()
+    cursor.close()
+    return account
+
+
 def add_user(username, password, first_name, last_name):
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(f'''INSERT INTO _user_(username, _password_, first_name, last_name)
                        VALUES(\'{username}\', \'{password}\', \'{first_name}\', \'{last_name}\')''')
     conn.commit()
     cursor.close()
+
 
 
 def add_task(name, date, user_id):

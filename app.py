@@ -20,7 +20,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         if username and password:
-            account = db.get_user(username, password)
+            account = db.get_user_for_registration(username)
             if account:
                 session["loggedin"] = True
                 session["username"] = username
