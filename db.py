@@ -46,10 +46,3 @@ def get_tasks(user_id, date):
     tasks = cursor.fetchall()
     cursor.close()
     return tasks
-
-
-def delete_task(task_id):
-    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    cursor.execute(f"DELETE FROM _task_ WHERE _id_={task_id}")
-    conn.commit()
-    cursor.close()

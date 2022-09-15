@@ -96,14 +96,5 @@ def get_tasks():
             return redirect(url_for('get_tasks'))
 
 
-@app.route('/delete_task', methods=['POST'])
-def delete_task():
-    if 'loggedin' not in session:
-        return redirect(url_for('index'))
-    else:
-        db.delete_task(request.form.get("task_id"))
-        return redirect(url_for('get_tasks'))
-
-
 if __name__ == '__main__':
     app.run()

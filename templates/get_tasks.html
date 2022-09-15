@@ -31,10 +31,6 @@
                 <hr>
                 <li>{{ task[2] }}</li>
                 <li>{{ task[3].strftime("%Y-%m-%d") }}</li>
-                <form action="{{ url_for('delete_task') }}" method="post">
-                    <input type="hidden" value="{{ task[0] }}" name="task_id">
-                    <input type="submit">
-                </form>
                 <hr>
             {% endfor %}
         </ul>
