@@ -33,7 +33,6 @@ def add_user(username, password, first_name, last_name):
     cursor.close()
 
 
-
 def add_task(name, date, user_id):
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(f"INSERT INTO task(user_id, _name_, _date_) VALUES(\'{user_id}\', \'{name}\', \'{date}\')")
@@ -47,3 +46,10 @@ def get_tasks(user_id, date):
     tasks = cursor.fetchall()
     cursor.close()
     return tasks
+
+
+def delete_task(task_id):
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute(f"DELETE FROM _task_ WHERE _id_={task_id}")
+    conn.commit()
+    cursor.close()
